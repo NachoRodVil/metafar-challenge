@@ -2,6 +2,7 @@ import { intervalValues, StockListItem, timeOption } from "@/types/types";
 import axios from "axios";
 
 export async function fetchStocksList() : Promise<StockListItem[]> {
+    // Filtre la data recibida para que solo se muestren las acciones de la bolsa NASDAQ y reducir un poco la cantidad de resultados a mostrar
     const response = await axios.get("https://api.twelvedata.com/stocks?exchange=NASDAQ");
     return response.data.data;
 }

@@ -1,4 +1,4 @@
-import { ChartProps, StockData } from "@/types/types";
+import { ChartProps } from "@/types/types";
 import Highcharts from 'highcharts/highstock'
 import HighchartsReact from 'highcharts-react-official'
 require('highcharts/indicators/indicators')(Highcharts)

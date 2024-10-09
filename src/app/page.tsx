@@ -21,16 +21,19 @@ const HomePage = () => {
     }, [data, page])
     return (
         <div className='bg-white rounded-md p-12 h-fit'>
-            {isLoading ? <BeatLoader color='purple' className='text-center' />
-                :
-                <>
-                    <table className='w-full'>
-                    {stockList.map((stock) => (
-                        <StockTableItem stock={stock}/>
-                    ))}
-                    </table>
-                    <Pagination page={page} setPage={setPage} maxPage={Math.ceil((data?.length ?? 0) / 20)} />
-                </>
+            {isLoading ? <BeatLoader color='purple' className='text-center' /> :
+                error ? <div className="text-red-500">Error fetching data</div>
+                    :
+                    <>
+                        <table className='w-full'>
+                            <tbody>
+                                {stockList.map((stock, i) => (
+                                    <StockTableItem key={i} stock={stock} />
+                                ))}
+                            </tbody>
+                        </table>
+                        <Pagination page={page} setPage={setPage} maxPage={Math.ceil((data?.length ?? 0) / 20)} />
+                    </>
             }
         </div>
     );

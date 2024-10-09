@@ -2,8 +2,8 @@
 import { fetchStockData } from "@/api/stocks"
 import { Chart } from "@/components/chart"
 import { intervalValues, StockData, timeOption } from "@/types/types"
-import { useQueries, useQuery } from "@tanstack/react-query"
-import { use, useEffect, useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+import { useEffect, useState } from "react"
 import { BeatLoader } from "react-spinners"
 
 function SingleStockView({ params }: { params: { stock: string } }) {
@@ -82,7 +82,7 @@ function SingleStockView({ params }: { params: { stock: string } }) {
             {
                 stockData.length ? (
                 <div className="my-6">
-                <Chart stockData={stockData} symbol={params.stock}/>
+                <Chart stockData={stockData || []} symbol={params.stock}/>
                 </div>
                 ) : null
             }
